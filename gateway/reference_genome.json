@@ -1,0 +1,53 @@
+[
+    {
+        "gene": "FIG1",
+        "data": {
+            "variants": [
+                { 
+                    "variant": "1",
+                    "sequence": "ATGGCCACTGTTCGAGCTCTTTTGCCAAATCTTTCATTTTAGTCACTTTGTGCATCAAGGTTCGAGAGAGGGACAGGGCGATGAAAACCGGTCGGATATATGACGCTGATGCAGCAACTTAACCGTTACCAAACCCCGTAGCGGATCGCATGATCTCTTGAACCGTGAGTGAAGTGTCGCCTGGACCCTTGGCGTGGCAA",
+                    "prevalance": 0.9
+                },
+                { 
+                    "variant": "2",
+                    "sequence": "ATGGCCACTGTTCGAGCTCTTTTGCCAAATCTTTCAATTTAGTCACTTTGTGCATGAAGGTTCGAGAGAGGGACAGGGCGATGATTACCGGTCAAATATATGACGCTGATGCTGCAACTTAACCGTTACCAAACCCCGTAGCGGATCGCGGGATCTCTAGAACCGTGAGAGAAGTGTCGCCTGGACCCTTGGCGTGGCAA",
+                    "prevalance": 0.1
+                }
+            ]
+        }
+    },
+    {
+        "gene": "MGFA",
+        "data": {
+            "variants": [
+                { 
+                    "variant": "1",
+                    "sequence": "CAGGTTCCGCAAGCCATACTCACAAAGACACGCCAGTTCAGGGGGGCTGATGTTCATCGAAGCATACATAGCCATAACTGCCCCCCAGAACTAAGTCTCTAATGAGAATTAGGGCTCTTAGTAAACCCCTTCTAGGGTTTGGCTACAATGAGACCTGTTCGTATTGTTATGCGTTATAGGTAAACTAGATAAGACGTGA",
+                    "prevalance": 0.5
+                },
+                { 
+                    "variant": "2",
+                    "sequence": "CAGGTTCCGCAAGCCAAACTCACAAAGACACGCCAGTTCTAGGGGGCTGATGTTCCATCGAAGCATACATACCGATAACTGCCCCCCAGAACTAAGTGTCTAATGAGAATTACGGCTCTTAGTAAACCCCATCTAGGGTTTGGCTACAATGAGATTTGTTCGTATTGTTTTGCGTTATAGGTAAACTCGATAAGACGTGA",
+                    "prevalance": 0.5
+                }
+            ]
+        }
+    },
+    {
+        "gene": "PET",
+        "data": {
+            "variants": [
+                { 
+                    "variant": "1",
+                    "sequence": "TTGCTTCTCGGCATCCTTCTGTTGACTATTAGGATGTGACCACTGACGTGCACGTTCCGGAGCGATACTTCTGGAAAGCCTAGACATATGTGGAAGAGAAGATCTGGCGCGAGCTTCTTAACCTCGCACAGCTGGCCAAATTCGAGCGACGACCCTGACGAGCCCGCGGCGACGTGAGTCGCCTAATGATTCTAACGAAA",
+                    "prevalance": 0.995
+                },
+                { 
+                    "variant": "2",
+                    "sequence": "TTGCTTCACGGCATCCTTCTGTTGACTATTAGGATGAGACCACTGACGTGCACGTACCGGAGCGCTACTTCAGGAAAGCCTAGACATATGTGGTAGAGAAGATCTGGCGCGACCTTCTTACCCTCGCACAGCTGGCCAAATTCAGCGACGTCCCTGACGAGCCCGCGGCTACGTGAGTCGCCTAATGATTCTAAGGAAA",
+                    "prevalance": 0.005
+                }
+            ]
+        }
+    }
+]
