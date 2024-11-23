@@ -58,7 +58,6 @@ def hello():
             data['count_matrix']['data']
             data[reads][index] = gene_match
 
-
     for reads_index, reads in enumerate(r1_reads):
         for read_index, read in enumerate(data[reads]):
             bc = read[0:18]
