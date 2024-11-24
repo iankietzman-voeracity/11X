@@ -5,9 +5,12 @@ import re
 import time
 
 from flask import Flask, request
+from flask_cors import CORS
 from Levenshtein import distance
 
 app = Flask(__name__)
+
+CORS(app, origins=['http://localhost:5173'])
 
 logging.basicConfig(filename=f'./logs/{str(datetime.date.today()).replace("-", "_")}.log', level=logging.INFO)
 
@@ -18,16 +21,12 @@ routes = {
 }
 
 hosts_whitelist = {
-    None: True
+    None: True,
+    'localhost': True
 }
 
 @app.before_request
-def authorization_placeholder():   
-    if not hosts_whitelist[request.origin]:
-        app.logger.info('CORS violation from: ' + str(request.origin))
-        return {
-            'error': 'Access blocked by CORS policy'
-        }
+def authorization_placeholder():
     if request.routing_exception:
         app.logger.info('Routing exception: ' + str(request.routing_exception))
         return {
