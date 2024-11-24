@@ -16,7 +16,11 @@ func BuildAPIServer(addr string) *APIServer {
 func (s *APIServer) Run() error {
 	router := http.NewServeMux()
 
-	router.HandleFunc("/levenshtein", func(w http.ResponseWriter, r *http.Request) {
+	router.HandleFunc("GET /levenshtein", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("testing three"))
+	})
+
+	router.HandleFunc("POST /levenshtein", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("testing"))
 	})
 
