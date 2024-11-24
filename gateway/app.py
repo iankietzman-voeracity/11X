@@ -1,16 +1,45 @@
+import datetime
 import json
 import logging
 import re
 import time
 
-from flask import Flask
+from flask import Flask, request
 from Levenshtein import distance
 
 app = Flask(__name__)
 
-logging.basicConfig(filename='logs.log', level=logging.INFO)
+logging.basicConfig(filename=f'./logs/{str(datetime.date.today()).replace("-", "_")}.log', level=logging.INFO)
 
-@app.route('/')
+routes = {
+    '/': {
+        'public': True
+    }
+}
+
+hosts_whitelist = {
+    None: True
+}
+
+@app.before_request
+def authorization_placeholder():   
+    if not hosts_whitelist[request.origin]:
+        app.logger.info('CORS violation from: ' + str(request.origin))
+        return {
+            'error': 'Access blocked by CORS policy'
+        }
+    if request.routing_exception:
+        app.logger.info('Routing exception: ' + str(request.routing_exception))
+        return {
+            'error': str(request.routing_exception)
+        }
+    if routes[str(request.url_rule)]['public'] == False:
+        app.logger.info('Unauthorized request: ' + str(request.url_rule))
+        return {
+            "error": "Not authorized"
+        }
+
+@app.route('/', methods=['GET'])
 def hello():
     tic = time.perf_counter_ns()
     REFERENCE_GENOME = []
