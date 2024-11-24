@@ -2,6 +2,7 @@ import datetime
 import json
 import logging
 import re
+import requests
 import time
 
 from flask import Flask, request
@@ -85,6 +86,10 @@ def hello():
                         gene_match['levenshtein_distance'] = distance(variant['sequence'], read)
             data['count_matrix']['data']
             data[reads][index] = gene_match
+
+    r = requests.get('http://localhost:8443/levenshtein')
+    print(r.status_code)
+    print(r.text)
 
     for reads_index, reads in enumerate(r1_reads):
         for read_index, read in enumerate(data[reads]):
