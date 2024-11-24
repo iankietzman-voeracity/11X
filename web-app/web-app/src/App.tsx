@@ -11,10 +11,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            {/* <Route element={<ProtectedRoute />}>
-                <Route path="account" element={<Account />} />
-            </Route>
-            <Route path="login" element={<Login />} /> */}
             <Route path="dashboard" element={<Dashboard />} />
           </Route>
         </Routes>
