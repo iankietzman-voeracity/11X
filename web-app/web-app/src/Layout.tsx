@@ -1,43 +1,22 @@
-// import app from './firebase'
-// import { getAuth, signOut } from 'firebase/auth'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
-// import { useAuth } from './AuthContext'
+import { Link, Outlet } from "react-router-dom";
 
 export default function Layout() {
-    // const { user } = useAuth()
-    // const navigate = useNavigate()
+  return (
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+        </ul>
+      </nav>
 
-    // const auth = getAuth(app)
+      <hr />
 
-    // function logout() {
-    //     signOut(auth)
-    //         .then(() => {
-    //             console.log('signed out')
-    //             navigate('/login')
-    //         })
-    //         .catch((error) => {
-    //             console.log('error signing out', error)
-    //         })
-    // }
-
-    // console.log('user', user)
-
-    return (
-        <div>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/dashboard">Dashboard</Link>
-                    </li>
-                </ul>
-            </nav>
-
-            <hr />
-
-            <Outlet />
-        </div>
-    )
+      <Outlet />
+    </div>
+  );
 }

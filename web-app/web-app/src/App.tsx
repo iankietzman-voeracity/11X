@@ -1,11 +1,10 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Dashboard from './Dashboard'
-import Home from './Home'
-import Layout from './Layout'
-import './App.css'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Dashboard from "./Dashboard";
+import Home from "./Home";
+import Layout from "./Layout";
+import "./App.css";
 
 function App() {
-
   return (
     <>
       <Router>
@@ -21,7 +20,7 @@ function App() {
         </Routes>
       </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
