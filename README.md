@@ -30,7 +30,7 @@ Each service has its own README with applicable information and instructions
 ### Dashboard with React Component Profiler showing fetched data
 ![Screenshot from 2024-11-25 13-00-32](https://github.com/user-attachments/assets/c9b09d91-6597-4e6d-8d47-a9f37bd118a9)
 
-### Data GOT (translation: past tense GET request) straight from Gateway
+### Data GOT (translation: past tense GET response) straight from Gateway
 ![Screenshot from 2024-11-25 13-01-29](https://github.com/user-attachments/assets/abd171af-c3c2-4543-83f0-8404edb2231c)
 
 ### Generated FASTQ files, R1 and R2 of same sample/lane side by side
