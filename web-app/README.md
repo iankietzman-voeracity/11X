@@ -5,14 +5,23 @@ This is a React application scaffolded and supported by Vite, with Shadcn + Tail
 
 ## Usage Instructions
 Clone the repo, `cd` into it then:
+
 `npm install`
+
 `npm run dev`
+
 Utility scripts:
+
 `npm run lint` to run eslint
+
 `npm run prettier:check` to check formatting
+
 `npm run prettier:format` to format
+
 `npm run test` to run unit tests
+
 See package.json for more Details
+
 
 Proposed Next Steps:
 - Finish Dockerizing and composing
