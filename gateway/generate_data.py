@@ -84,51 +84,31 @@ def randomizedLane(lanes) -> str:
         raise ExceptionHandler('No lanes found') 
     return str(random.randint(1, lanes))
 
-for cellTypeIndex, cellType in enumerate(CELL_EXPRESSION_LEVELS):
-    for i in range(CELLS_PER_CELLTYPE):
-        barcode = generateRandomSequence(18)
-        for index, gene in enumerate(GENES):
-            for transcript in range(CELL_EXPRESSION_LEVELS[cellTypeIndex][index]):
-                skip = random.randint(1, 1 / SKIP_RATE)
+def main():
+    for cellTypeIndex, cellType in enumerate(CELL_EXPRESSION_LEVELS):
+        for i in range(CELLS_PER_CELLTYPE):
+            barcode = generateRandomSequence(18)
+            for index, gene in enumerate(GENES):
+                for transcript in range(CELL_EXPRESSION_LEVELS[cellTypeIndex][index]):
+                    skip = random.randint(1, 1 / SKIP_RATE)
 
-                if skip == 1:
-                    continue
+                    if skip == 1:
+                        continue
 
-                duplicate = random.randint(1, 1 / DUPLICATION_RATE)
-                umi = generateRandomSequence(10)
-                referenceSequence = REFERENCE_GENOME[index]['data']['variants'][VARIANTS[index][random.randint(0,1)]]['sequence']
-                readStart = random.randint(0,len(referenceSequence) - 91)
-                readSequence = referenceSequence[readStart:readStart + 91]
-                readSequence = mutateSequence(readSequence, NT_READ_ERROR_RATE)
-                lane = randomizedLane(LANES)
-
-                r1SequenceData = (
-                    f'{SEQUENCE_IDENTIFIER_PREFIX + lane + R1_SEQUENCE_IDENTIFIER_SUFFIX}\n'
-                    f'{barcode + umi}\n'
-                    '+\n'
-                    f'{generateQualityValues(len(barcode + umi))}\n'
-                )
-
-                r2SequenceData = (
-                    f'{SEQUENCE_IDENTIFIER_PREFIX + lane + R2_SEQUENCE_IDENTIFIER_SUFFIX}\n'
-                    f'{readSequence}\n'
-                    '+\n'
-                    f'{generateQualityValues(len(readSequence))}\n'
-                )
-
-                if  FILENAME_PREFIX + lane + FILENAME_INFIX + '1' + FILENAME_SUFFIX in writeData.keys():
-                    writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '1' + FILENAME_SUFFIX] = writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '1' + FILENAME_SUFFIX] + r1SequenceData
-                else: 
-                    writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '1' + FILENAME_SUFFIX] = r1SequenceData
-
-                if  FILENAME_PREFIX + lane + FILENAME_INFIX + '2' + FILENAME_SUFFIX in writeData.keys():
-                    writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '2' + FILENAME_SUFFIX] = writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '2' + FILENAME_SUFFIX] + r2SequenceData
-                else: 
-                    writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '2' + FILENAME_SUFFIX] = r2SequenceData
-
-                if duplicate == 1:
+                    duplicate = random.randint(1, 1 / DUPLICATION_RATE)
+                    umi = generateRandomSequence(10)
+                    referenceSequence = REFERENCE_GENOME[index]['data']['variants'][VARIANTS[index][random.randint(0,1)]]['sequence']
+                    readStart = random.randint(0,len(referenceSequence) - 91)
+                    readSequence = referenceSequence[readStart:readStart + 91]
                     readSequence = mutateSequence(readSequence, NT_READ_ERROR_RATE)
                     lane = randomizedLane(LANES)
+
+                    r1SequenceData = (
+                        f'{SEQUENCE_IDENTIFIER_PREFIX + lane + R1_SEQUENCE_IDENTIFIER_SUFFIX}\n'
+                        f'{barcode + umi}\n'
+                        '+\n'
+                        f'{generateQualityValues(len(barcode + umi))}\n'
+                    )
 
                     r2SequenceData = (
                         f'{SEQUENCE_IDENTIFIER_PREFIX + lane + R2_SEQUENCE_IDENTIFIER_SUFFIX}\n'
@@ -137,11 +117,34 @@ for cellTypeIndex, cellType in enumerate(CELL_EXPRESSION_LEVELS):
                         f'{generateQualityValues(len(readSequence))}\n'
                     )
 
-                    writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '1' + FILENAME_SUFFIX] = writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '1' + FILENAME_SUFFIX] + r1SequenceData
+                    if  FILENAME_PREFIX + lane + FILENAME_INFIX + '1' + FILENAME_SUFFIX in writeData.keys():
+                        writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '1' + FILENAME_SUFFIX] = writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '1' + FILENAME_SUFFIX] + r1SequenceData
+                    else: 
+                        writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '1' + FILENAME_SUFFIX] = r1SequenceData
 
-                    writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '2' + FILENAME_SUFFIX] = writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '2' + FILENAME_SUFFIX] + r2SequenceData
+                    if  FILENAME_PREFIX + lane + FILENAME_INFIX + '2' + FILENAME_SUFFIX in writeData.keys():
+                        writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '2' + FILENAME_SUFFIX] = writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '2' + FILENAME_SUFFIX] + r2SequenceData
+                    else: 
+                        writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '2' + FILENAME_SUFFIX] = r2SequenceData
 
-for key in writeData.keys():
-    with open(key, 'w') as file:
-        file.write(writeData[key])
+                    if duplicate == 1:
+                        readSequence = mutateSequence(readSequence, NT_READ_ERROR_RATE)
+                        lane = randomizedLane(LANES)
 
+                        r2SequenceData = (
+                            f'{SEQUENCE_IDENTIFIER_PREFIX + lane + R2_SEQUENCE_IDENTIFIER_SUFFIX}\n'
+                            f'{readSequence}\n'
+                            '+\n'
+                            f'{generateQualityValues(len(readSequence))}\n'
+                        )
+
+                        writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '1' + FILENAME_SUFFIX] = writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '1' + FILENAME_SUFFIX] + r1SequenceData
+
+                        writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '2' + FILENAME_SUFFIX] = writeData[FILENAME_PREFIX + lane + FILENAME_INFIX + '2' + FILENAME_SUFFIX] + r2SequenceData
+
+    for key in writeData.keys():
+        with open(key, 'w') as file:
+            file.write(writeData[key])
+
+if __name__ == "__main__":
+   main()
