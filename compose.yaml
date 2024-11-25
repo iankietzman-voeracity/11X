@@ -1,5 +1,5 @@
 services:
-  web: 
+  gateway: 
     build:
       context: gateway
       target: builder
