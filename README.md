@@ -18,6 +18,7 @@ Architecture choices have been guided by trying to adhere to technologies outlin
 Each service has its own README with applicable information and instructions
 
 # Screenshots
+![Screenshot from 2024-11-25 11-33-21](https://github.com/user-attachments/assets/61b11317-e2ab-45cb-8e54-de1d5c1a7901)
 
 # Demo 
 
