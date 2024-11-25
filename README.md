@@ -8,7 +8,7 @@ I haved name this project 11x as a cheeky homage to Christopher Guest's Nigel Tu
 The purpose of this application is to dust off some molecular genetics skills and demonstrate some headstart on the domain knowledge required, wire something "interesting" and full-stack together to demonstrate technical skill, and provide something halfway digestible for discussion. This is by no means a perfect application and represents perhaps 30 hours of work, including domain knowledge uptake. There is no claim to being production ready, and theoretical proposed next steps will be outlined here and in the README files for the individual services. 
 
 # Application Description and Philosophy
-11X is a full stack application where one can generate mock FASTQ data, parse and analyze and that, and interact with that data in a web application. 
+11X is a full stack application where one can generate mock FASTQ data, parse and analyze them, and interact with that data in a web application. 
 
 Architecture choices have been guided by trying to adhere to technologies outlined in the position description here: [https://careers.10xgenomics.com/careers/job/171824516809](https://careers.10xgenomics.com/careers/job/171824516809)
 
