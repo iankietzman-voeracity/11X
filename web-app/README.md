@@ -10,7 +10,7 @@ Clone the repo, `cd` into it then...
 
 `npm run dev`
 
-...to start up the dev server
+...to start up the dev server on port 5173
 
 Utility scripts:
 
