@@ -1,4 +1,4 @@
-# 11X Web App
+# 11x Web App
 
 ## Service Description and Philosophy
 This is a React application scaffolded and supported by Vite, with Shadcn + TailwindCSS for a component library, and Vitest with React Testing Libary for unit testing.
@@ -26,6 +26,7 @@ See package.json for more details
 
 
 Proposed Next Steps:
+- Fix a few implicit any types
 - Finish Dockerizing and composing
 - Add Github Actions for linting, testing, building, deployment
 - Identify further abstraction candidates
