@@ -69,6 +69,7 @@ func (s *APIServer) Run() error {
 		}
 		distance := levenshtein.DistanceForStrings([]rune(sequence.Read), []rune(sequence.TargetSequence), levenshtein.DefaultOptions)
 		w.Write([]byte(strconv.Itoa(distance)))
+		
 	})
 
 	server := http.Server{
