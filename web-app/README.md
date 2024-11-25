@@ -4,11 +4,13 @@
 This is a React application scaffolded and supported by Vite, with Shadcn + TailwindCSS for a component library, and Vitest with React Testing Libary for unit testing.
 
 ## Usage Instructions
-Clone the repo, `cd` into it then:
+Clone the repo, `cd` into it then...
 
 `npm install`
 
 `npm run dev`
+
+...to start up the dev server
 
 Utility scripts:
 
@@ -20,7 +22,7 @@ Utility scripts:
 
 `npm run test` to run unit tests
 
-See package.json for more Details
+See package.json for more details
 
 
 Proposed Next Steps:
