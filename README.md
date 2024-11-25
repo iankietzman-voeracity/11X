@@ -9,6 +9,7 @@ The purpose of this application is to dust off some molecular genetics skills an
 Architecture choices have been guided by trying to adhere to technologies outlined in the position description here: [https://careers.10xgenomics.com/careers/job/171824516809](https://careers.10xgenomics.com/careers/job/171824516809)
 
 # Services Architecture Diagram
+![Screenshot from 2024-11-25 11-33-21](https://github.com/user-attachments/assets/61b11317-e2ab-45cb-8e54-de1d5c1a7901)
 
 # Services Stack Details
 - Web App - React with Vite and SWC, Shadcn + TailwindCSS, Vitest + React Testing Library
@@ -18,7 +19,6 @@ Architecture choices have been guided by trying to adhere to technologies outlin
 Each service has its own README with applicable information and instructions
 
 # Screenshots
-![Screenshot from 2024-11-25 11-33-21](https://github.com/user-attachments/assets/61b11317-e2ab-45cb-8e54-de1d5c1a7901)
 
 # Demo 
 
