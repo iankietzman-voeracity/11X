@@ -110,7 +110,7 @@ def hello():
                 for gene in REFERENCE_GENOME:
                     genes[gene['gene']] = 0
                 data['count_matrix']['data'][bc] = {
-                    'genes': genes,
+                    'genes': genes
                 }
             if umi not in data['count_matrix']['umis']:
                 data['count_matrix']['umis'].append(umi)
