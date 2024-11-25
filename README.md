@@ -25,7 +25,7 @@ Each service has its own README with applicable information and instructions
 # Screenshots
 
 ### 11x Home
-![Screenshot from 2024-11-25 12-58-57](https://github.com/user-attachments/assets/46187ec3-bbc6-424f-bd72-1aafdf5c237b)
+![Screenshot from 2024-11-25 13-18-06](https://github.com/user-attachments/assets/706356a8-d8aa-45bc-83f7-747a9904245c)
 
 ### Dashboard with React Component Profiler showing fetched data
 ![Screenshot from 2024-11-25 13-00-32](https://github.com/user-attachments/assets/c9b09d91-6597-4e6d-8d47-a9f37bd118a9)
