@@ -83,11 +83,20 @@ def hello():
                     if distance(variant['sequence'], read) < gene_match['levenshtein_distance']:
                         gene_match['gene'] = gene['gene']
                         gene_match['variant'] = variant
+                        # This will work, it's just slow and needs to be reduced to a single http call
+                        # r = requests.post('http://localhost:8443/levenshtein', json={
+                        #     'target_sequence': variant['sequence'],
+                        #     'read_sequence': read
+                        # })
+                        # print(r, distance(variant['sequence'], read))
                         gene_match['levenshtein_distance'] = distance(variant['sequence'], read)
             data['count_matrix']['data']
             data[reads][index] = gene_match
 
-    r = requests.get('http://localhost:8443/levenshtein')
+    r = requests.post('http://localhost:8443/levenshtein', json={
+        'target_sequence': variant['sequence'],
+        'read_sequence': read
+    })
     print(r.status_code)
     print(r.text)
 
