@@ -20,3 +20,17 @@ To start the dev server on port 8000:
 
 To test:
 `pytest`
+
+## Proposed Next Steps
+- Finish Dockerizing and composing
+- Add Github Actions for linting, testing, building, deployment
+- Identify further abstraction candidates
+- Additional error handling
+- Concurrentify and parallelize computationally heavy operations and move from Gateway to Mendel
+- Algorithmic improvements and benchmarking
+- Memory store (SQLite in this case, though I typically default to Postgres if I do not have additional specifications to go from) to eliminate processing the same underlying data upon every request
+- Add ins, del, dup to `mutateSequence` function
+- Parameterize some constants
+- Change Gateway-Mendel communication protocol to gRPC
+- Change file reads/writes to streams
+

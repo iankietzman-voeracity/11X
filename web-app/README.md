@@ -25,7 +25,7 @@ Utility scripts:
 See package.json for more details
 
 
-Proposed Next Steps:
+## Proposed Next Steps:
 - Fix a few implicit any types
 - Finish Dockerizing and composing
 - Add Github Actions for linting, testing, building, deployment
