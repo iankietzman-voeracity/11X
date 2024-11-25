@@ -23,6 +23,17 @@ Architecture choices have been guided by trying to adhere to technologies outlin
 Each service has its own README with applicable information and instructions
 
 # Screenshots
+### 11x Home
+![Screenshot from 2024-11-25 12-58-57](https://github.com/user-attachments/assets/46187ec3-bbc6-424f-bd72-1aafdf5c237b)
+
+### Dashboard with Component Profiler showing fetched data
+![Screenshot from 2024-11-25 13-00-32](https://github.com/user-attachments/assets/c9b09d91-6597-4e6d-8d47-a9f37bd118a9)
+
+### Data GOT straight from Gateway
+![Screenshot from 2024-11-25 13-01-29](https://github.com/user-attachments/assets/abd171af-c3c2-4543-83f0-8404edb2231c)
+
+### Generated FASTQ files, R1 and R2 of same sample/lane side by side
+![Screenshot from 2024-11-25 13-03-06](https://github.com/user-attachments/assets/ba664a59-669b-4f0f-8f73-20b5d738c959)
 
 # Demo 
 
