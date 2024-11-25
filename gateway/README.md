@@ -1,7 +1,7 @@
 # 11x Gateway
 
 ## Service Description and Philosophy
-This is a thin Flask application to generate FASTQ data and files, parse and analyze those files, and serve up the applicated aggregated data via a HTTP.
+This is a thin Flask application to generate FASTQ data and files, parse and analyze those files, and serve up the applicable aggregated data via HTTP.
 
 ## Usage Instructions
 Clone the repo, `cd` into it then...
