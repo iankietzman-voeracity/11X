@@ -42,7 +42,7 @@ Each service has its own README with applicable information and instructions
 I'm probably not going to do these on my own accord, unless there is some expressed interest as a sort of coding test, in which case a request/directed task might be appropriate.
 - Finish Dockerizing and composing services
 - Add Github Actions for linting, testing, building, deployment
-- Identify further abstraction candidates - there are several chucks of procedural code that are way too long for my taste
+- Identify further abstraction candidates -- there are several chucks of procedural code that are way too long for my taste
 - Concurrentify (is that a word?) and parallelize computationally heavy operations and move from Gateway to Mendel
 - Lots of error handling
 - Algorithmic improvements and benchmarking
