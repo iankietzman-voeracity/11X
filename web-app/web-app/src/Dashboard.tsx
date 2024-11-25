@@ -8,7 +8,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
 export default function Dashboard() {
   const [data, setData] = useState({});
@@ -36,9 +36,11 @@ export default function Dashboard() {
       <h2 className="text-xl p-2">Dashboard</h2>
       <h2 className="text-l p-2">Cell Matrix</h2>
       <Table>
-        <TableCaption>Raw data can be seen in the console for your convenience.</TableCaption>
+        <TableCaption>
+          Raw data can be seen in the console for your convenience.
+        </TableCaption>
         <TableHeader>
-          <TableRow >
+          <TableRow>
             <TableHead>Cell</TableHead>
             {data.refGen.map((gene, index) => (
               <TableHead key={index}>{gene.gene}</TableHead>
@@ -47,13 +49,15 @@ export default function Dashboard() {
         </TableHeader>
         <TableBody>
           {data.count_matrix.cells.map((barcode, index) => (
-              <TableRow key={index}>
-                <TableCell>{barcode}</TableCell>
-                {data.refGen.map((gene, gene_index) => (
-                  <TableCell key={gene_index}>{data.count_matrix.data[barcode].genes[gene.gene]}</TableCell>
-                ))}
-              </TableRow>
-            ))}
+            <TableRow key={index} role="row">
+              <TableCell>{barcode}</TableCell>
+              {data.refGen.map((gene, gene_index) => (
+                <TableCell key={gene_index}>
+                  {data.count_matrix.data[barcode].genes[gene.gene]}
+                </TableCell>
+              ))}
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </div>

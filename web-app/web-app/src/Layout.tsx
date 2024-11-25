@@ -8,7 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
 
 export default function Layout() {
   return (
@@ -16,12 +16,12 @@ export default function Layout() {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <Link to="/">
+            <Link role="menuitem" to="/">
               Home
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link to="/dashboard">
+            <Link role="menuitem" to="/dashboard">
               Dashboard
             </Link>
           </NavigationMenuItem>
@@ -29,7 +29,6 @@ export default function Layout() {
       </NavigationMenu>
 
       <Outlet />
-
     </div>
   );
 }
