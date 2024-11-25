@@ -21,6 +21,7 @@ export default function Dashboard() {
       setLoading(false);
     }
     fetchData();
+    
   }, []);
 
   useEffect(() => {
