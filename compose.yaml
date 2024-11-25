@@ -1,5 +1,5 @@
 services:
-  gateway: 
+  web: 
     build:
       context: gateway
       target: builder
@@ -8,3 +8,11 @@ services:
     stop_signal: SIGINT
     ports:
       - '8000:8000'
+  webapp:
+    build:
+      context: web-app
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
