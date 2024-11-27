@@ -5,7 +5,9 @@ REFERENCE_GENOME = []
 with open("./reference_genome.json", "r") as f:
     REFERENCE_GENOME = json.load(f)
     
-FILENAME_PREFIX = './data/tinygex_S1_L00'
+
+FILENAME_SAMPLE_NUMBER = str((random.randint(100, 1000000)))
+FILENAME_PREFIX = './data/tinygex_S' + FILENAME_SAMPLE_NUMBER + '_L00'
 FILENAME_INFIX = '_R'
 FILENAME_SUFFIX = '_001.fastq'
 LANES = 2

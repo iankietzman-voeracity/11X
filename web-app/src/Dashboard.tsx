@@ -16,7 +16,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await ky.get("http://localhost:8000/");
+      const response = await ky.get("http://localhost:8000/data/931179");
       setData(await response.json());
       setLoading(false);
     }
@@ -35,7 +35,7 @@ export default function Dashboard() {
   return (
     <div>
       <h2 className="text-xl p-2">Dashboard</h2>
-      <h2 className="text-l p-2">Cell Matrix</h2>
+      <h2 className="text-l p-2">Count Matrix</h2>
       <Table>
         <TableCaption>
           Raw data can be seen in the console for your convenience.

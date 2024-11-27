@@ -5,9 +5,12 @@ import re
 import requests
 import time
 
+import db
+
 from flask import Flask, request
 from flask_cors import CORS
 from Levenshtein import distance
+from playhouse.shortcuts import model_to_dict
 
 app = Flask(__name__)
 
@@ -17,6 +20,9 @@ logging.basicConfig(filename=f'./logs/{str(datetime.date.today()).replace("-", "
 
 routes = {
     '/': {
+        'public': True
+    },
+    '/data/<int:sample_id>': {
         'public': True
     }
 }
@@ -39,18 +45,30 @@ def authorization_placeholder():
             "error": "Not authorized"
         }
 
-@app.route('/', methods=['GET'])
-def hello():
+@app.route('/data/<int:sample_id>', methods=['GET'])
+def sample_data(sample_id):
     tic = time.perf_counter_ns()
+
+    stored_run_data = {}
+    try:
+        stored_run_data = db.Run.get(id=(sample_id))
+        app.logger.info('Elapsed: ' + str((time.perf_counter_ns() - tic) / 1000000) + 'ns')
+
+        # Also printing in case of logging config doesn't work out of the box
+        print('Elapsed: ' + str((time.perf_counter_ns() - tic) / 1000000) + 'ns')
+        return json.loads(stored_run_data.data)
+    except db.DoesNotExist:
+        app.logger.info('Run data not found, analyzing for storage: ' + str(sample_id))
+
     REFERENCE_GENOME = []
     with open("./reference_genome.json", "r") as f:
         REFERENCE_GENOME = json.load(f)
 
     files = (
-        'tinygex_S1_L001_R1_001.fastq',
-        'tinygex_S1_L001_R2_001.fastq',
-        'tinygex_S1_L002_R1_001.fastq',
-        'tinygex_S1_L002_R2_001.fastq',
+        f'tinygex_S{sample_id}_L001_R1_001.fastq',
+        f'tinygex_S{sample_id}_L001_R2_001.fastq',
+        f'tinygex_S{sample_id}_L002_R1_001.fastq',
+        f'tinygex_S{sample_id}_L002_R2_001.fastq',
     )
 
     data = {}
@@ -97,8 +115,6 @@ def hello():
         'target_sequence': variant['sequence'],
         'read_sequence': read
     })
-    print(r.status_code)
-    print(r.text)
 
     for reads_index, reads in enumerate(r1_reads):
         for read_index, read in enumerate(data[reads]):
@@ -122,6 +138,8 @@ def hello():
 
     # Also printing in case of logging config doesn't work out of the box
     print('Elapsed: ' + str((time.perf_counter_ns() - tic) / 1000000) + 'ns')
+
+    db.Run.create(id=sample_id, data=json.dumps(data))
 
     return data
 
