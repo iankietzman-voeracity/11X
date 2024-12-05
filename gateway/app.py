@@ -51,6 +51,12 @@ def authorization_placeholder():
 
 @app.route('/data/<int:sample_id>', methods=['GET'])
 def sample_data(sample_id):
+    '''
+    Okay so quite frankly, this route handler is way too long and begs 
+    for some further abstraction. If anybody ever shows any interest I'm happy
+    to do so, but I'm not going to spend any more time upfront on something 
+    nobody is going to see.
+    '''
     tic = time.perf_counter_ns()
 
     stored_run_data = {}
@@ -106,6 +112,7 @@ def sample_data(sample_id):
                         gene_match['gene'] = gene['gene']
                         gene_match['variant'] = variant
                         # This will work, it's just slow and needs to be reduced to a single http call
+                        # that accepts the entire dataset and returns a single result
                         # r = requests.post('http://localhost:8443/levenshtein', json={
                         #     'target_sequence': variant['sequence'],
                         #     'read_sequence': read
