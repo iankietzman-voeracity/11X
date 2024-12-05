@@ -32,6 +32,7 @@ See package.json for more details
 - Identify further abstraction candidates
 - Additional error handling
 - Additional features
+  - ~~Silhouette scores and number of clusters determination~~
   - Clustering visualization 
   - Interesting variant flags
 - Auth

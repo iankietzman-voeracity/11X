@@ -10,7 +10,11 @@ import db
 from flask import Flask, request
 from flask_cors import CORS
 from Levenshtein import distance
+import numpy as np
 from playhouse.shortcuts import model_to_dict
+from sklearn.datasets import load_iris
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
 
 app = Flask(__name__)
 
@@ -111,10 +115,10 @@ def sample_data(sample_id):
             data['count_matrix']['data']
             data[reads][index] = gene_match
 
-    r = requests.post('http://localhost:8443/levenshtein', json={
-        'target_sequence': variant['sequence'],
-        'read_sequence': read
-    })
+    # r = requests.post('http://localhost:8443/levenshtein', json={
+    #     'target_sequence': variant['sequence'],
+    #     'read_sequence': read
+    # })
 
     for reads_index, reads in enumerate(r1_reads):
         for read_index, read in enumerate(data[reads]):
@@ -139,6 +143,36 @@ def sample_data(sample_id):
     # Also printing in case of logging config doesn't work out of the box
     print('Elapsed: ' + str((time.perf_counter_ns() - tic) / 1000000) + 'ns')
 
+    clustering_array = []
+
+    for cell in data['count_matrix']['data']:
+        genes = list(data['count_matrix']['data'][cell]["genes"].keys())
+        genes.sort()
+        print(genes)
+        count = []
+        for gene in genes:
+            print(data['count_matrix']['data'][cell]["genes"][gene])
+            count.append(data['count_matrix']['data'][cell]["genes"][gene])
+        print(count)
+        clustering_array.append(count)
+
+    clustering_array = np.array(clustering_array)
+    print('cu', clustering_array)
+    
+    sil_score_max = -1 #this is the minimum possible score
+
+    best_n_clusters = 0
+    for n_clusters in range(2,len(data['count_matrix']['data'])):
+        model = KMeans(n_clusters = n_clusters, init='k-means++', max_iter=100, n_init=1)
+        labels = model.fit_predict(clustering_array)
+        sil_score = silhouette_score(clustering_array, labels)
+        print("The average silhouette score for %i clusters is %0.2f" %(n_clusters,sil_score))
+        if sil_score > sil_score_max:
+            sil_score_max = sil_score
+            best_n_clusters = n_clusters
+    data['clusters'] = {}
+    data['clusters']['clusters'] = best_n_clusters
+    data['clusters']['clustering_array'] = clustering_array.tolist()
     db.Run.create(id=sample_id, data=json.dumps(data))
 
     return data

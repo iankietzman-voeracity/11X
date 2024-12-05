@@ -1,5 +1,7 @@
 flask
 flask-cors
 levenshtein
+numpy
 peewee
+scikit-learn
 requests
